@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Check Out{% endblock title %}
+{% block header %}Controle de Horas{% endblock header %}
+{% block content %}
+    <form action="{{ request.get_full_path }}" method="POST">
+        {% csrf_token %}
+
+        <h1>{% now "H:i" %}</h1>
+        <p>
+            Último check in: {{ request.user.employee.last_checkin }}
+        </p>
+
+        <div class="ui-grid-solo">
+            <div class="ui-block-a"><button type="v" data-theme="b">Check Out</button></div>
+        </div>
+    </form>
+{% endblock content %}

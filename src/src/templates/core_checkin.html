@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Check In{% endblock title %}
+{% block header %}Controle de Horas{% endblock header %}
+{% block content %}
+    <form action="{{ request.get_full_path }}" method="POST">
+        {% csrf_token %}
+
+        <h1>{% now "jS F Y H:i" %}</h1>
+        <p>
+            Dias trabalhados: {{ request.user.employee.total_days }}<br />
+            Horas trabalhadas: {{ request.user.employee.total_hours }}<br />
+            Último checkout: {{ request.user.employee.last_checkout }}
+        </p>
+
+        <div class="ui-grid-solo">
+            <div class="ui-block-a"><button type="v" data-theme="b">Check In</button></div>
+        </div>
+    </form>
+{% endblock content %}
