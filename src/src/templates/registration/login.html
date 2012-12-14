@@ -1,7 +1,15 @@
-<form action="{% url login %}" method="POST">
-    {% csrf_token %}
+{% extends 'base.html' %}
 
-    {{ form.as_p }}
+{% block title %}Login{% endblock title %}
+{% block header %}Controle de Horas{% endblock header %}
 
-    <input type="submit" value="Sign in">
-</form>
+{% block content %}
+    <form action="{% url login %}" method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Login</button>
+    </form>
+    <a href="">Registrar</a>
+{% endblock content %}

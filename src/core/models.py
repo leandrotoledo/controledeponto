@@ -51,9 +51,18 @@ class Employee(models.Model):
 class EmployeeTracking(models.Model):
     record_in = models.DateTimeField()
     record_out = models.DateTimeField(blank=True, null=True)
+    description = models.CharField(max_length=100, blank=True)
     worked_hours = models.FloatField(blank=True, default=0)
 
     employee = models.ForeignKey(Employee)
+
+    @property
+    def balance(self):
+        if self.record_out:
+            hours = int(self.worked_minutes - self.employee.workload_minutes) / 60.0
+            hours = round(hours, 2)
+            return hours
+        return False
 
     @property
     def worked_minutes(self):
