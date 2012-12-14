@@ -49,6 +49,12 @@ class Employee(models.Model):
 
 
 class EmployeeTracking(models.Model):
+    STATUS = (
+        (u'Positive', 'status/positive.gif'),
+        (u'Negative', 'status/negative.gif'),
+        (u'Neutral', 'status/neutral.gif'),
+    )
+
     record_in = models.DateTimeField()
     record_out = models.DateTimeField(blank=True, null=True)
     description = models.CharField(max_length=100, blank=True)
@@ -63,6 +69,16 @@ class EmployeeTracking(models.Model):
             hours = round(hours, 2)
             return hours
         return False
+
+    @property
+    def status(self):
+        if self.balance > 0:
+            return self.STATUS[0]
+        elif self.balance < 0:
+            return self.STATUS[1]
+        elif self.balance == 0:
+            return self.STATUS[2]
+        return None
 
     @property
     def worked_minutes(self):

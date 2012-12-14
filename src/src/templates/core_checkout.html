@@ -7,7 +7,8 @@
 
         <h1>{% now "H:i" %}</h1>
         <p>
-            Último check in: {{ request.user.employee.last_checkin }}
+            Último checkin: {{ request.user.employee.last_checkin }}<br />
+            Hora de saída:
         </p>
 
         <button type="submit">Check Out</button>

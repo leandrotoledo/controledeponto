@@ -9,7 +9,8 @@
         <p>
             Dias trabalhados: {{ request.user.employee.total_days }}<br />
             Horas trabalhadas: {{ request.user.employee.total_hours }}<br />
-            Último checkout: {{ request.user.employee.last_checkout }}
+            Último checkout: {{ request.user.employee.last_checkout }}<br />
+            Saldo: {{ request.user.employee.last_checkout.balance }} <img alt="{{ request.user.employee.last_checkout.status.0 }}" src="{{ STATIC_URL }}{{ request.user.employee.last_checkout.status.1 }}" />
         </p>
 
         <button type="submit">Check In</button>
