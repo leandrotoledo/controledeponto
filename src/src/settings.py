@@ -64,6 +64,8 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'public')
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = '/home/'
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".

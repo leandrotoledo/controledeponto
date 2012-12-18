@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}History{% endblock title %}
+{% block content %}
+
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Checkin</th>
+            <th>Checkout</th>
+            <th>Descrição</th>
+            <th>Horas trabalhadas</th>
+        </tr>
+        {% for et in ets %}
+        <tr>
+            <td>{{ et.record_in|date:"d/m/Y" }}</td>
+            <td>{{ et.record_in|time:"H:i" }}</td>
+            <td>{{ et.record_out|time:"H:i" }}</td>
+            <td>{{ et.description }}</td>
+            <td>{{ et.worked_hours }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <ul>
+        <li><a href="#">Último mês</a></li>
+        <li><a href="#">Última semana</a></li>
+        <li><a href="#">Intervalo personalizado</a></li>
+    </ul>
+
+{% endblock content %}

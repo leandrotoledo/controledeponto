@@ -2,12 +2,12 @@
 
 {% block title %}Check In{% endblock title %}
 {% block content %}
-    <form action="{{ request.get_full_path }}" method="POST">
+    <form action="{% url checkin %}" method="POST">
         {% csrf_token %}
 
         <h1>{% now "H:i" %}</h1>
         <p>
-            Dias trabalhados: {{ request.user.employee.total_days }}<br />
+            Checkins efetuados: {{ request.user.employee.total_days }}<br />
             Horas trabalhadas: {{ request.user.employee.total_hours }}<br />
             Último checkout: {{ request.user.employee.last_checkout }}<br />
             Saldo: {{ request.user.employee.last_checkout.balance }} <img alt="{{ request.user.employee.last_checkout.status.0 }}" src="{{ STATIC_URL }}{{ request.user.employee.last_checkout.status.1 }}" />
@@ -15,8 +15,4 @@
 
         <button type="submit">Check In</button>
     </form>
-    <ul>
-        <li><a href="">Histórico</a></li>
-        <li><a href="">Total de Horas</a></li>
-    </ul>
 {% endblock content %}

@@ -2,7 +2,7 @@
 
 {% block title %}Check Out{% endblock title %}
 {% block content %}
-    <form action="{{ request.get_full_path }}" method="POST">
+    <form action="{% url checkout %}" method="POST">
         {% csrf_token %}
 
         <h1>{% now "H:i" %}</h1>
@@ -13,7 +13,4 @@
 
         <button type="submit">Check Out</button>
     </form>
-    <ul>
-        <li><a href=""></a></li>
-    </ul>
 {% endblock content %}
