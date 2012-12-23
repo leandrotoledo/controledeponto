@@ -1,8 +1,9 @@
 # Django settings for src project.
 import os
 
-DEBUG = True
 PROJECT_DIR = os.path.dirname(__file__)
+
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -13,12 +14,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',         # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'controle',              # Or path to database file if using sqlite3.
-        'USER': 'controle',              # Not used with sqlite3.
-        'PASSWORD': 'Y29udHJvbGUK',      # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.',         # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',              # Or path to database file if using sqlite3.
+        'USER': '',              # Not used with sqlite3.
+        'PASSWORD': '',          # Not used with sqlite3.
+        'HOST': '',              # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',              # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -167,3 +168,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from local_settings import *
+except ImportError, e:
+    print 'Unable to load local_settings.py:', e
