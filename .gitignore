@@ -7,3 +7,5 @@ Scripts
 .Python
 *.pyc
 *.db
+uwsgi.ini
+local_settings.py
